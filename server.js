@@ -1,19 +1,16 @@
 var PORT = 8000 || process.env.port;
-var mainRouter = require('../routes/index');
-var apiRouter = requrire('../routes/api');
+var mainRouter = require('./routes/index');
+var apiRouter = require('./routes/api');
 var DB = "mongodb://localhost.angulartwo";
 var mongoose = require('mongoose');
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var morgan = require('morgan');
-
 var app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-});
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', mainRouter);
 app.use('/api', apiRouter);
 mongoose.connect(DB, function(err){
