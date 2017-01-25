@@ -1,4 +1,6 @@
 var PORT = 8000 || process.env.port;
+var mainRouter = require('../routes/index');
+var apiRouter = requrire('../routes/api');
 var DB = "mongodb://localhost.angulartwo";
 var mongoose = require('mongoose');
 var express = require('express');
@@ -12,6 +14,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 });
+app.use('/', mainRouter);
+app.use('/api', apiRouter);
 mongoose.connect(DB, function(err){
   if(err){
     return err;
@@ -20,3 +24,8 @@ mongoose.connect(DB, function(err){
   }
 });
 app.set('views', __dirname + '/client/views');
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/client'));
+app.listen(PORT, function(){
+  console.log('Listening on port ' + PORT);
+})
