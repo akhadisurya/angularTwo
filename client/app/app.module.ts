@@ -5,6 +5,7 @@ import { HumanComponent } from './human.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
     imports: [BrowserModule, HttpModule, FormsModule],
     declarations: [AppComponent, HumanComponent],
