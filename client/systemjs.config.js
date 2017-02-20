@@ -38,4 +38,3 @@
         }
     });
 })(this);
-Contact GitHub API Training Shop Blog About

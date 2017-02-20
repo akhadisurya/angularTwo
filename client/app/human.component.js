@@ -8,52 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var app_service_1 = require('./app.service');
+var core_1 = require("@angular/core");
 var HumanComponent = (function () {
-    function HumanComponent(humanService) {
-        var _this = this;
-        this.humanService = humanService;
-        humanService.getHumans().subscribe(function (response) {
-            _this.humans = response;
-        });
+    function HumanComponent() {
+        this.name = "Create a human with angular 2!";
     }
-    HumanComponent.prototype.viewHuman = function (id) {
-        var _this = this;
-        console.log('in component  with ' + id);
-        this.humanService.viewHuman(id).subscribe(function (data) {
-            _this.specificHumanAge = data.age;
-            _this.specificHumanName = data.name;
-        });
-    };
-    HumanComponent.prototype.addHuman = function () {
-        var _this = this;
-        var human = {
-            name: this.name,
-            age: this.age
-        };
-        this.humanService.addHuman(human)
-            .subscribe(function (data) {
-            console.log('Success' + data);
-            _this.humans.push(human);
-        });
-    };
-    HumanComponent.prototype.removeHuman = function (id) {
-        this.humanService.removeHuman(id)
-            .subscribe(function (data) {
-            console.log('Success deleting ' + data);
-        });
-    };
-    HumanComponent = __decorate([
-        core_1.Component({
-            selector: 'human',
-            moduleId: module.id,
-            templateUrl: 'human.html',
-            providers: [app_service_1.HumanService]
-        }),
-        __metadata('design:paramtypes', [app_service_1.HumanService])
-    ], HumanComponent);
     return HumanComponent;
 }());
+HumanComponent = __decorate([
+    core_1.Component({
+        selector: 'human',
+        moduleID: module.id,
+        templateUrl: 'human.html'
+    }),
+    __metadata("design:paramtypes", [])
+], HumanComponent);
 exports.HumanComponent = HumanComponent;
 //# sourceMappingURL=human.component.js.map
